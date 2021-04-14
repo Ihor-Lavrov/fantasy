@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  fantasy-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ".:/codebase"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres-db
+
+  postgres-db:
+    image: postgres:10.6
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root12345
+      POSTGRES_USER: root
+      POSTGRES_DB: fantasy
+    ports:
+      - "5432:5432"
