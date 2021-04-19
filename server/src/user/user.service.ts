@@ -14,7 +14,7 @@ export class UserService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    await this.userRepository.save({})
+    await this.userRepository.save(createUserDto)
     return 'This action adds a new user';
   }
 
@@ -22,8 +22,8 @@ export class UserService {
     return `This action returns all user`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(email: string) {
+    return this.userRepository.findOne({email})
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
