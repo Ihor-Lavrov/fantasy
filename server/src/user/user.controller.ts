@@ -11,7 +11,6 @@ export class UserController {
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
-    console.log(createUserDto);
     return this.userService.create(createUserDto);
   }
 
@@ -21,7 +20,7 @@ export class UserController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get(':email')
+  @Get(':email') 
   findOne(@Param('email') email: string) {
     console.log(email);
     return this.userService.findOne(email);

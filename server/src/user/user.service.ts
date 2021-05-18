@@ -13,9 +13,8 @@ export class UserService {
   ) {
   }
 
-  async create(createUserDto: CreateUserDto) {
-    await this.userRepository.save(createUserDto)
-    return 'This action adds a new user';
+  async create(createUserDto: CreateUserDto): Promise<CreateUserDto> {
+    return this.userRepository.save(createUserDto)
   }
 
   findAll() {
