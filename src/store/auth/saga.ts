@@ -7,7 +7,6 @@ import { AuthService } from "../../api/auth";
 function* login({ payload }: SagaAction<AuthData>): any {
   try {
     const { data } = yield call(AuthService.login, payload);
-    localStorage.setItem('jwt', data.access_token);
   } catch (e) {
     console.log(e);
   }

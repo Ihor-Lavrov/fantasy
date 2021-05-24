@@ -1,0 +1,14 @@
+import axios from "axios";
+
+class PlayerService {
+  getPlayerList = async () => {
+    const result = await axios.get("http://localhost:3000/player", {
+      withCredentials: true,
+    });
+    console.log(result);
+    return { data: result?.data };
+  };
+}
+
+const PlayerServiceInstance = new PlayerService();
+export { PlayerServiceInstance as PlayerService };

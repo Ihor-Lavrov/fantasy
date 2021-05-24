@@ -1,1 +1,19 @@
 @import "node_modules/normalize-scss/sass/normalize";
+
+.test {
+  background: green;
+  position: relative;
+  width: 100%;
+
+  &:before {
+    content: "123";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100px;
+    background: yellowgreen;
+    width: 100%;
+    transform: skewY(-30deg) translateY(320px);
+    z-index: -1;
+  }
+}

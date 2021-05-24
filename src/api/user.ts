@@ -3,7 +3,7 @@ import { CreateUserPayload } from "../store/user/types";
 
 class UserService {
   createUser = async (data: CreateUserPayload) => {
-    return  axios.post('http://localhost:3000/user', data);
+    return axios.post('http://localhost:3000/auth/register', data);
   }
 }
 
