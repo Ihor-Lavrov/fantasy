@@ -41,13 +41,11 @@ export const SignIn = () => {
   });
 
   const check = () => {
-    console.log('checked')
     dispatch(playerActions.getPlayersList());
   };
 
   return (
     <Grid container spacing={2} className={classes.container}>
-      <div className="test">test</div>
       <form onSubmit={formik.handleSubmit}>
         <Grid item xs={12}>
           <TextField

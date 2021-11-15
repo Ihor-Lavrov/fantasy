@@ -1,23 +1,41 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-import createSagaMiddleware from 'redux-saga'
-import rootReducer from "./rootReducer";
+import {
+  applyMiddleware,
+  combineReducers,
+  createStore,
+  Middleware,
+} from 'redux';
+
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+
+import { createBrowserHistory } from 'history';
+
+import createSagaMiddleware from 'redux-saga';
+
 import rootSaga from './rootSaga';
 
-const composeEnhancers = composeWithDevTools({
-  name: 'Website',
-  trace: true,
-  traceLimit: 20,
+export const history = createBrowserHistory();
+
+const rootReducer = combineReducers({
+  router: connectRouter(history), // used for syncing react-router with redux
 });
 
+export type AppState = ReturnType<typeof rootReducer>;
 
-const sagaMiddleware = createSagaMiddleware();
+export default function configureStore() {
+  const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware)),
-);
+  const middleWares: Middleware[] = [routerMiddleware(history), sagaMiddleware];
 
-sagaMiddleware.run(rootSaga);
+  const middleWareEnhancer = applyMiddleware(...middleWares);
 
-export default store;
+  const store = createStore(
+    rootReducer,
+    composeWithDevTools(middleWareEnhancer),
+  );
+
+  sagaMiddleware.run(rootSaga);
+
+  return store;
+}

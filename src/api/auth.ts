@@ -6,14 +6,13 @@ class AuthSerice {
     const result = await axios.post("http://localhost:3000/auth/login", data, {
       withCredentials: true,
     });
-    console.log(result);
+
     return { data: result?.data };
   };
 
   register = async (data: any) => {
     const result = await axios.post('http://localhost:3000/auth/register', data , {
     })
-    console.log(result);
   }
 }
 

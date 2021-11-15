@@ -7,7 +7,6 @@ import { SagaAction } from "../../commonTypes";
 function* createUser({ payload }: SagaAction<CreateUserPayload>): any {
   try {
     yield call(UserService.createUser, payload);
-
     
   } catch (e) {
     console.log(e)
