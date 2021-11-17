@@ -14,11 +14,13 @@ import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from './rootSaga';
+import { gameReducer } from './game/reducer';
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   router: connectRouter(history), // used for syncing react-router with redux
+  games: gameReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

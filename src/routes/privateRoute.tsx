@@ -8,5 +8,5 @@ export const PrivateRoute = ({ ...rest }) => {
     return <Route {...rest} />;
   }
 
-  return <Redirect to="/login" />;
+  return <Redirect to="/" />;
 };

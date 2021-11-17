@@ -5,6 +5,7 @@ import { PrivateRoute } from "./privateRoute";
 import { history } from "../store/configure-store";
 import { routesPath } from "./routesPath";
 import { SignIn, SignUp } from "../pages/Auth";
+import { Dashboard } from "../pages/dashboard";
 
 function Routing() {
   return (
@@ -13,8 +14,12 @@ function Routing() {
         <Switch>
           <Route exact path="/" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
-          <PrivateRoute exact path={routesPath.home} />
-          <Redirect from="/" to={routesPath.home} />
+          <PrivateRoute
+            exact
+            path={routesPath.dashboard}
+            component={Dashboard}
+          />
+          <Redirect from="/" to={routesPath.dashboard} />
         </Switch>
       </>
     </ConnectedRouter>
