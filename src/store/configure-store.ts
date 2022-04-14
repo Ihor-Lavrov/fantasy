@@ -3,24 +3,24 @@ import {
   combineReducers,
   createStore,
   Middleware,
-} from 'redux';
+} from "redux";
 
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
 
-import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { connectRouter, routerMiddleware } from "connected-react-router";
 
-import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from "history";
 
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from "redux-saga";
 
-import rootSaga from './rootSaga';
-import { gameReducer } from './game/reducer';
+import rootSaga from "./rootSaga";
+import { gameReducer } from "./game/reducer";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
   router: connectRouter(history), // used for syncing react-router with redux
-  games: gameReducer
+  games: gameReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
@@ -34,7 +34,7 @@ export default function configureStore() {
 
   const store = createStore(
     rootReducer,
-    composeWithDevTools(middleWareEnhancer),
+    composeWithDevTools(middleWareEnhancer)
   );
 
   sagaMiddleware.run(rootSaga);

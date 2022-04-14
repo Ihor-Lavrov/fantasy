@@ -1,14 +1,13 @@
 import React from "react";
-import { Formik, Form } from "formik";
+import { useFormik } from "formik";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 
-import { Input } from "../../components/Input/Input";
-import { Label } from "../../components/Label/Label";
 import { useDispatch } from "react-redux";
 import { CreateUserPayload } from "../../store/user/types";
 import { userActions } from "../../store/user/actions";
+import TextField from "@material-ui/core/TextField";
 
 export const SignUp = () => {
   const dispatch = useDispatch();
@@ -29,34 +28,49 @@ export const SignUp = () => {
     [dispatch]
   );
 
+  const formik = useFormik({
+    initialValues,
+    onSubmit,
+  });
+
   return (
     <Box m={5}>
       <Grid container spacing={3}>
-        <Formik initialValues={initialValues} onSubmit={onSubmit}>
-          <Form>
-            <Grid item xs={12}>
-              <Grid item xs={12}>
-                <Label htmlFor="name">Name</Label>
-              </Grid>
-              <Input id="name" name="name" />
-            </Grid>
-            <Grid item xs={12}>
-              <Grid item xs={12}>
-                <Label htmlFor="email">Email</Label>
-              </Grid>
-              <Input id="name" name="email" />
-            </Grid>
-            <Grid item xs={12}>
-              <Grid item xs={12}>
-                <Label htmlFor="password">Password</Label>
-              </Grid>
-              <Input type="password" id="name" name="password" />
-            </Grid>
+        <form onSubmit={formik.handleSubmit}>
+          <Grid item xs={12}>
+            <TextField
+              label="Name"
+              id="name"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Email"
+              id="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              label="Password"
+              id="password"
+              name="password"
+              type="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+            />
+          </Grid>
+          <Box sx={{ my: 3 }}>
             <Button variant="contained" color="primary" type="submit">
               Submit
             </Button>
-          </Form>
-        </Formik>
+          </Box>
+        </form>
       </Grid>
     </Box>
   );

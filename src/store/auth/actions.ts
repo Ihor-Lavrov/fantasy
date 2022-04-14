@@ -5,5 +5,5 @@ export const authActions = {
   login: (payload: AuthData) => ({
     type: AUTH,
     payload,
-  })
-}
+  }),
+};

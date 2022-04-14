@@ -11,9 +11,12 @@ class AuthSerice {
   };
 
   register = async (data: any) => {
-    const result = await axios.post('http://localhost:3000/auth/register', data , {
-    })
-  }
+    const result = await axios.post(
+      "http://localhost:3000/auth/register",
+      data,
+      {}
+    );
+  };
 }
 
 const AuthServiceInstance = new AuthSerice();

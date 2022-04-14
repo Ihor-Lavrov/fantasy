@@ -5,5 +5,5 @@ export const userActions = {
   createUser: (payload: CreateUserPayload) => ({
     type: CREATE_NEW_USER,
     payload: payload,
-  })
-}
+  }),
+};

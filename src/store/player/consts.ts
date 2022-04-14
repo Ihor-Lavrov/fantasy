@@ -1,1 +1,1 @@
-export const GET_PLAYERS_LIST = 'GET_PLAYERS_LIST';
+export const GET_PLAYERS_LIST = "GET_PLAYERS_LIST";

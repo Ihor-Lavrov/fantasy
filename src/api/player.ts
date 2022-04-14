@@ -5,7 +5,7 @@ class PlayerService {
     const result = await axios.get("http://localhost:3000/player", {
       withCredentials: true,
     });
-    
+
     return { data: result?.data };
   };
 }

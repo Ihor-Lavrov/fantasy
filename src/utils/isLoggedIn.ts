@@ -1,1 +1,1 @@
-export const isLoggedIn: boolean = !!localStorage.getItem('jwt');
+export const isLoggedIn: boolean = !!localStorage.getItem("jwt");

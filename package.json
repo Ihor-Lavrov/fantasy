@@ -15,12 +15,16 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
     "axios": "^0.21.4",
     "connected-react-router": "^6.9.1",
     "cookie-parser": "^1.4.5",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "formik": "^2.2.6",
     "node-sass": "^5.0.0",
     "normalize-scss": "^7.0.1",
+    "prettier": "^2.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.3",
@@ -39,7 +43,9 @@
     "start": "PORT=5000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext ts,tsx src --ignore-path .gitignore",
+    "ling:fix": "eslint --ext ts,tsx src --ignore-path .gitignore --fix"
   },
   "eslintConfig": {
     "extends": [
